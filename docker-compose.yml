@@ -3,7 +3,6 @@
 
 version: "3.4"
 services:
-
   deluge:
     container_name: deluge
     image: linuxserver/deluge:latest
@@ -94,15 +93,15 @@ services:
       - ${ROOT}/complete/tv:/tv # tv shows folder
     ports:
       - 6767:6767
-      
+
   overseerr:
     image: sctx/overseerr:latest
     container_name: overseerr
     environment:
       - LOG_LEVEL=info
-      - TZ=Asia/Tokyo
+      - TZ=${TZ}
     ports:
       - 5055:5055
     volumes:
-      - /path/to/appdata/config:/app/config
+      - ${ROOT}/config/bazaar:/app/config # todo: change to overseerr
     restart: unless-stopped
