@@ -12,8 +12,8 @@ services:
       - PGID=${PGID} # default group id, defined in .env
       - TZ=${TZ} # timezone, defined in .env
     volumes:
-      - ${ROOT}\downloads:/downloads # downloads folder
-      - ${ROOT}\config\deluge:/config # config files
+      - ${ROOT}/downloads:/downloads # downloads folder
+      - ${ROOT}/config/deluge:/config # config files
     ports:
       - 8112:8112
 
@@ -39,6 +39,7 @@ services:
     restart: unless-stopped
     environment:
       - TZ=${TZ} # timezone, defined in .env
+      - PLEX_CLAIM=${PLEX_CLAIM}
     volumes:
       - ${ROOT}/config/plex/db:/config # plex database
       - ${ROOT}/config/plex/transcode:/transcode # temp transcoded files
